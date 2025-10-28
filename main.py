@@ -11,8 +11,7 @@ def main():
     repository_manager = Repository_manager()
     while True:
         number=int(input("Enter the number of the action: "))
-        id=4
-
+        id=10
         match number:
                 case 1:
                     person = repository_manager.company.create({

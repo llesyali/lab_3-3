@@ -34,10 +34,6 @@ class Vehicle(models.Model):
         db_table = 'vehicle'
 
 
-    @staticmethod
-    def right_plate(plate):
-        return len(plate) == 8
-
 
 class Director(models.Model):
     director_id=models.AutoField(primary_key=True)
