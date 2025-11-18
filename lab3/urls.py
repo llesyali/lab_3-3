@@ -23,5 +23,6 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path("api/auth/", include("authentication.urls")),
     path('tickets-report/', TicketReportView.as_view(), name='ticket-report'),
+    path('', include('webapp.urls')),
 
 ]

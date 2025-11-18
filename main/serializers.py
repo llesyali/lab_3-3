@@ -27,6 +27,7 @@ class StopSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class VehicleSerializer(serializers.ModelSerializer):
+    company = serializers.PrimaryKeyRelatedField(queryset=Company.objects.all())
     class Meta:
         model = Vehicle
         fields = '__all__'

@@ -1,0 +1,11 @@
+{% for p in persons %}
+    <li>
+        {{ p.name }} (ID: {{ p.person_id }})
+        <form action="{% url 'person_api_delete' p.person_id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+{% empty %}
+    <li>No persons found</li>
+{% endfor %}

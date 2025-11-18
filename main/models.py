@@ -91,7 +91,7 @@ class Race(models.Model):
     vehicle=models.ForeignKey(Vehicle, on_delete=models.CASCADE)
     depature_time=models.TimeField()
     arrival_time=models.TimeField()
-    regularity_time=models.CharField(max_length=45, blank=True, null=True)
+    regularity=models.CharField(max_length=45, blank=True, null=True)
 
     class Meta:
         managed = False

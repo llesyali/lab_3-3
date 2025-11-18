@@ -1,0 +1,11 @@
+<ul>
+{% for s in settlements %}
+    <li>
+        {{ s.name }} (ID: {{ s.settlement_id }})
+        <form action="{% url 'settlement_api_delete' s.settlement_id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+{% endfor %}
+</ul>
