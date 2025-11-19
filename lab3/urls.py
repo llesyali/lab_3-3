@@ -18,11 +18,12 @@ router.register('stops', StopViewSet, basename='stop')
 router.register('tickets', TicketViewSet, basename='ticket')
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),  
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path("api/auth/", include("authentication.urls")),
     path('tickets-report/', TicketReportView.as_view(), name='ticket-report'),
     path('', include('webapp.urls')),
-
 ]
+
+

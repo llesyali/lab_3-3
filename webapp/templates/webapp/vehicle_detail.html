@@ -1,4 +1,11 @@
-<h1>Vehicle: {{ vehicle.license_plate }}</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DETAIL</title>
+</head>
+<body>
+<h1>: {{ vehicle.license_plate }}</h1>
 
 <p><strong>Company:</strong> {{ vehicle.company }}</p>
 <p><strong>Type:</strong> {{ vehicle.type }}</p>
@@ -8,8 +15,11 @@
 
 <form method="post" action="{% url 'vehicle_delete' vehicle.pk %}">
     {% csrf_token %}
-    <button type="submit" style="color: red;">Delete</button>
+    <button type="submit">Delete</button>
 </form>
 
 <br>
 <a href="{% url 'vehicle_list' %}">← Back to list</a>
+
+</body>
+</html>

@@ -1,11 +1,24 @@
-<h1>Delete Vehicle</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LIST</title>
+</head>
+<body>
 
-<p>Are you sure you want to delete <strong>{{ object.license_plate }}</strong>?</p>
 
-<form method="post">
-    {% csrf_token %}
-    <button type="submit" style="color: red;">Yes, delete</button>
-</form>
+<h1>Vehicles</h1>
 
-<br>
-<a href="{% url 'vehicle_detail' object.pk %}">Cancel</a>
+<ul>
+{% for vehicle in vehicles %}
+    <li>
+        <a href="{% url 'vehicle_detail' vehicle.pk %}">{{ vehicle.license_plate }}</a>
+        | <a href="{% url 'vehicle_delete' vehicle.pk %}">Delete</a>
+    </li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'vehicle_create' %}">Add new vehicle</a>
+
+</body>
+</html>

@@ -1,7 +1,7 @@
 from main.models import Vehicle
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import CreateView, UpdateView, DeleteView, DetailView, ListView
 from .NetworkHelper import NetworkHelper
 
 api = NetworkHelper(
@@ -28,14 +28,6 @@ def person_api_delete(request, pk):
         api.delete_person(pk)
     return redirect('persons_api_list')
 
-def vehicle_list (request):
-    vehicles = Vehicle.objects.all()
-    return render(request, 'webapp/vehicle_list.html', {'vehicles': vehicles})
-
-def vehicle_detail (request, pk):
-    vehicle = get_object_or_404(Vehicle, pk=pk)
-    return render(request, 'webapp/vehicle_detail.html', {'vehicle': vehicle})
-
 
 class VehicleCreateView(CreateView):
     model = Vehicle
@@ -55,3 +47,13 @@ class VehicleDeleteView(DeleteView):
     model = Vehicle
     success_url = reverse_lazy('vehicle_list')
     template_name = 'webapp/vehicle_delete.html'
+
+class VehicleListView(ListView):
+    model = Vehicle
+    template_name = 'webapp/vehicle_list.html'
+    context_object_name = 'vehicles'
+
+
+class VehicleDetailView(DetailView):
+    model = Vehicle
+    template_name = 'webapp/vehicle_detail.html'

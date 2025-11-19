@@ -18,11 +18,11 @@ class  BaseViewSet(viewsets.ModelViewSet):
             return Response(serializer.data)
         return Response(status=status.HTTP_404_NOT_FOUND)
 
-    def  create(self,request):
-        new_d=self.repository.create(request.data)
-        serializer=self.serializer_class(new_d)
-        return Response(serializer.data,status=status.HTTP_201_CREATED)
-
+    def create(self, request):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def destroy(self,request,pk=None):
         obj=self.repository.delete(pk)
